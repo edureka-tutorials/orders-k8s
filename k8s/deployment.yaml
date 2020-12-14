@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: payment
+  name: orders
   labels:
-    app: payment
+    app: orders
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: payment
+      app: orders
   template:
     metadata:
       labels:
-        app: payment
+        app: orders
     spec:
       containers:
-        - name: payment
-          image: public.ecr.aws/y5u7j3p0/payment:latest
+        - name: orders
+          image: public.ecr.aws/y5u7j3p0/orders
           ports:
-            - containerPort: 5005
+            - containerPort: 5004
           envFrom:
             - secretRef:
-                name: mongo-secret  
+                name: mongo-secret
